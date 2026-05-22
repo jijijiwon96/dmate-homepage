@@ -33,6 +33,16 @@ export default function ContactPage() {
                 </a>
               </div>
               <div>
+                <p className="text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-3">Tel</p>
+                <a
+                  href="tel:0251500625"
+                  className="text-xl md:text-2xl font-medium hover:opacity-50 transition-opacity"
+                >
+                  02-515-0625
+                </a>
+                <p className="text-sm text-[#6b6b6b] mt-1">F. 02-6455-0624</p>
+              </div>
+              <div>
                 <p className="text-xs tracking-[0.3em] uppercase text-[#6b6b6b] mb-3">Address</p>
                 <p className="text-base text-[#0a0a0a]">
                   서울특별시 강남구 테헤란로
