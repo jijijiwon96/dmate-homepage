@@ -1,0 +1,120 @@
+{
+  "project": "D-MATE Homepage Phase 1",
+  "version": "1.0",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "프로젝트 기반 설정 (폰트·디자인 토큰·next.config)",
+      "passes": true,
+      "acceptanceCriteria": [
+        "public/fonts/ 에 PretendardVariable.woff2 다운로드 또는 대체 폰트 설정 완료 ✓ (Noto Sans KR via next/font/google)",
+        "src/app/globals.css 에 Tailwind v4 @theme 토큰 정의됨 ✓",
+        "next.config.ts 에 experimental.serverActions.allowedOrigins 설정됨 ✓",
+        "src/lib/types.ts 에 Work, Category 타입 정의됨 ✓",
+        "src/lib/utils.ts 에 cn() 유틸 함수 존재 ✓",
+        "npm run build 에러 없음 ✓"
+      ]
+    },
+    {
+      "id": "US-002",
+      "title": "루트 레이아웃 + Header + Footer",
+      "passes": true,
+      "acceptanceCriteria": [
+        "<html lang='ko'> 확인 가능 ✓",
+        "Header: D-MATE 로고(텍스트) + Work/About us/Contact 네비 링크 존재 ✓",
+        "Header: 스크롤 시 transparent → solid 전환 ✓",
+        "Footer: D-MATE © year, oddin@dmate.kr 포함 ✓",
+        "모바일(375px): 햄버거 메뉴 존재 ✓",
+        "npm run build 에러 없음 ✓"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "정적 콘텐츠 파일 + 데이터 액세스 seam",
+      "passes": true,
+      "acceptanceCriteria": [
+        "src/content/works.ts 에 Work[] 배열 8개 (4개 카테고리 분산) ✓",
+        "src/content/clients.ts 에 ClientLogo[] 배열 8개 ✓",
+        "src/content/leadership.ts 에 김재광/유하재 데이터 ✓",
+        "src/lib/data/works.ts 에 getWorks(), getWorkBySlug() 존재 ✓",
+        "getWorks()가 published:true 반환 ✓",
+        "TypeScript 에러 없음 ✓"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "홈 페이지 — Hero + Reel placeholder",
+      "passes": true,
+      "acceptanceCriteria": [
+        "Hero 섹션: min-height 100dvh, 'We Activate Your Brand' 텍스트 중앙 ✓",
+        "Hero 폰트: clamp(2.8rem, 10vw, 9rem) ✓",
+        "스크롤 인디케이터(↓) 하단 중앙 ✓",
+        "Reel 섹션: placeholder 전체화면 존재 ✓",
+        "빌드 성공 ✓"
+      ]
+    },
+    {
+      "id": "US-005",
+      "title": "홈 페이지 — Work/About/Contact 프리뷰 섹션",
+      "passes": true,
+      "acceptanceCriteria": [
+        "Work 프리뷰: 최신 4개 캠페인 2x2 그리드, 'VIEW ALL WORK →' 링크 ✓",
+        "About 프리뷰: IEC 카피 + 'MORE ABOUT US →' 링크 ✓",
+        "Contact 프리뷰: mailto 링크 oddin@dmate.kr ✓",
+        "각 섹션 /work, /about, /contact 이동 ✓",
+        "빌드 성공 ✓"
+      ]
+    },
+    {
+      "id": "US-006",
+      "title": "Work 페이지 — 2컬럼 그리드 + 카테고리 필터",
+      "passes": true,
+      "acceptanceCriteria": [
+        "/work 라우트 접근 가능 ✓",
+        "2컬럼 그리드 (grid-cols-2) ✓",
+        "썸네일 aspect-ratio 16:9 ✓",
+        "카테고리 필터 칩: All/IMC/런칭/Issue-up/Sales-up ✓",
+        "URL에 ?category=imc 반영 ✓",
+        "빌드 성공 ✓"
+      ]
+    },
+    {
+      "id": "US-007",
+      "title": "About us 페이지 — 5개 섹션",
+      "passes": true,
+      "acceptanceCriteria": [
+        "/about 라우트 접근 가능 ✓",
+        "Section 1: We Activate Your Brand 철학 ✓",
+        "Section 2: IEC 내용 ✓",
+        "Section 3: Strategy/Content/Campaign/Data 4개 서비스 카드 ✓",
+        "Section 4: 타임라인 + 김재광/유하재 리더십 카드 ✓",
+        "Section 5: 클라이언트 로고 그리드 ✓",
+        "빌드 성공 ✓"
+      ]
+    },
+    {
+      "id": "US-008",
+      "title": "Contact 페이지 — 지도 + 이메일",
+      "passes": true,
+      "acceptanceCriteria": [
+        "/contact 라우트 접근 가능 ✓",
+        "'Let's talk.' 대형 타이포 ✓",
+        "oddin@dmate.kr mailto 링크 ✓",
+        "Google Maps iframe embed ✓",
+        "빌드 성공 ✓"
+      ]
+    },
+    {
+      "id": "US-009",
+      "title": "반응형 + 접근성 + 빌드 검증",
+      "passes": true,
+      "acceptanceCriteria": [
+        "모든 페이지 레이아웃 깨짐 없음 (clamp + max-w + grid) ✓",
+        "prefers-reduced-motion 미디어쿼리 globals.css에 적용 ✓",
+        "npm run build 성공 (exit code 0) ✓",
+        "npm run lint 에러 0개 ✓",
+        "tsc --noEmit 에러 0개 ✓"
+      ]
+    }
+  ]
+}
