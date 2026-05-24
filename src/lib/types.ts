@@ -13,6 +13,11 @@ export type Work = {
   sort_order: number;
   published: boolean;
   created_at: string;
+  // Detail page fields (optional - static scrape from dmate.kr)
+  background?: string;
+  whats_new?: string;
+  result?: string;
+  detail_images?: string[];
 };
 
 export type ClientLogo = {
