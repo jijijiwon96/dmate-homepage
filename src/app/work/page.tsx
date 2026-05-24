@@ -4,7 +4,7 @@ import CategoryFilter from '@/components/work/CategoryFilter';
 import WorkGrid from '@/components/work/WorkGrid';
 
 interface WorkPageProps {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; brand?: string }>;
 }
 
 export const metadata = {
@@ -12,14 +12,15 @@ export const metadata = {
   description: 'D-MATE의 캠페인 포트폴리오입니다.',
 };
 
-async function WorkContent({ category }: { category: string }) {
+async function WorkContent({ category, brand }: { category: string; brand?: string }) {
   const works = await getWorks();
-  return <WorkGrid works={works} activeCategory={category} />;
+  return <WorkGrid works={works} activeCategory={category} activeBrand={brand} />;
 }
 
 export default async function WorkPage({ searchParams }: WorkPageProps) {
   const params = await searchParams;
   const rawCategory = params.category ?? 'all';
+  const activeBrand = params.brand;
 
   // Normalize category value
   const categoryMap: Record<string, string> = {
@@ -37,7 +38,7 @@ export default async function WorkPage({ searchParams }: WorkPageProps) {
       <div className="mb-10 md:mb-16">
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">Work</h1>
         <Suspense fallback={null}>
-          <CategoryFilter active={activeCategory} />
+          <CategoryFilter active={activeCategory} activeBrand={activeBrand} />
         </Suspense>
       </div>
 
@@ -49,7 +50,7 @@ export default async function WorkPage({ searchParams }: WorkPageProps) {
           ))}
         </div>
       }>
-        <WorkContent category={activeCategory} />
+        <WorkContent category={activeCategory} brand={activeBrand} />
       </Suspense>
     </div>
   );
