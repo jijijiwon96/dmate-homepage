@@ -44,15 +44,11 @@ export default function CategoryFilter({ active, activeBrand }: { active: string
     router.push(`/work?${params.toString()}`, { scroll: false });
   };
 
-  const currentBrand = activeBrand ?? 'all';
-
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
         {categories.map((cat) => {
-          const isActive =
-            active === cat.value ||
-            (cat.value === 'all' && active === 'all');
+          const isActive = active === cat.value;
           return (
             <button
               key={cat.value}
@@ -71,7 +67,7 @@ export default function CategoryFilter({ active, activeBrand }: { active: string
       </div>
       <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
         {brands.map((brand) => {
-          const isActive = currentBrand === brand.value;
+          const isActive = (activeBrand ?? 'all') === brand.value;
           return (
             <button
               key={brand.value}
