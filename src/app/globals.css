@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #ffffff;
-  --color-fg: #0a0a0a;
-  --color-muted: #6b6b6b;
-  --color-accent: #0a0a0a;
-  --color-border: #e5e5e5;
-  --font-display: "Pretendard Variable", "Noto Sans KR", system-ui, -apple-system, sans-serif;
-  --font-body: "Pretendard Variable", "Noto Sans KR", system-ui, -apple-system, sans-serif;
-  --text-hero: clamp(3rem, 10vw, 9rem);
-  --space-section: clamp(4rem, 10vw, 10rem);
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-muted: #888888;
+  --color-border: #1f1f1f;
+  --font-bartle: 'Bebas Neue', sans-serif;
+  --font-hegarty: 'Bebas Neue', sans-serif;
+  --font-noto: var(--font-noto), 'Noto Sans KR', system-ui, sans-serif;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0a0a0a;
+  --background: #000000;
+  --foreground: #ffffff;
+  --color-brand: #0B63AD;
+  --color-brand-light: #3BAFD4;
 }
 
 * {
@@ -28,9 +28,18 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-noto);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Hide scrollbar for category filters */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

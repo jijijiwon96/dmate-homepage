@@ -1,34 +1,40 @@
 import Link from 'next/link';
+import FadeUp from '@/components/ui/FadeUp';
 
 export default function AboutPreview() {
   return (
-    <section className="py-24 md:py-32 bg-[#0a0a0a] text-white">
-      <div className="px-6 md:px-12 max-w-[1440px] mx-auto">
-        <div className="max-w-3xl">
-          <p className="text-xs tracking-[0.4em] uppercase text-white/40 mb-8">About</p>
+    <section className="bg-black py-24 md:py-40 px-6 md:px-10">
+      <div className="max-w-[1440px] mx-auto">
+        <FadeUp delay={0}>
+          <p className="text-white/45 text-[10px] tracking-[0.5em] uppercase mb-10">About</p>
           <h2
-            className="font-bold leading-tight tracking-tight"
-            style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+            className="text-white font-black leading-[1.2] tracking-[-0.01em] max-w-3xl"
+            style={{
+              fontSize: 'clamp(2.5rem, 6vw, 6rem)',
+            }}
           >
             IMC를 넘어,
             <br />
-            통합 경험을 연결합니다.
+            통합 경험을
+            <br />
+            연결합니다.
           </h2>
-          <p className="mt-6 text-white/60 text-base md:text-lg leading-relaxed max-w-xl">
-            우리는 브랜드 경험을 하나로 연결하는 것이 중요하다고 생각합니다.
-            On &amp; Off 경계없이 브랜드를 이야기할 수 있는 모든 접점을 연결하여
-            브랜드를 경험할 수 있도록 제안하고 실행합니다.
+        </FadeUp>
+        <FadeUp delay={0.15}>
+          <p className="mt-8 text-white/65 text-base md:text-lg leading-relaxed max-w-lg">
+            브랜드의 문제를 발견하고, On &amp; Off 경계 없이 모든 접점을 연결하여
+            브랜드 경험을 실행합니다.
           </p>
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 mt-10 text-xs tracking-[0.3em] uppercase text-white/60 hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 mt-10 text-white/65 text-[13px] tracking-[0.3em] uppercase hover:text-white transition-colors"
           >
             More About Us
-            <svg width="20" height="10" viewBox="0 0 20 10" fill="none">
-              <path d="M0 5h18M13 1l5 4-5 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg width="18" height="8" viewBox="0 0 18 8" fill="none">
+              <path d="M0 4h16M11 1l4 3-4 3" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </Link>
-        </div>
+        </FadeUp>
       </div>
     </section>
   );

@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import { useState } from 'react';
 
 const navLinks = [
   { href: '/work', label: 'Work' },
@@ -11,38 +11,33 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
   return (
-    <header
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-white border-b border-[#e5e5e5]' : 'bg-transparent',
-      )}
-    >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
-        {/* Logo */}
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 flex items-stretch h-16 bg-black border-b border-white/10">
+        {/* Logo box */}
         <Link
           href="/"
-          className="text-[#0a0a0a] font-bold text-lg tracking-widest uppercase"
+          className="flex items-center justify-center shrink-0 px-5 h-16"
         >
-          D-MATE
+          <Image
+            src="/%EB%94%94%EB%A9%94%EC%9D%B4%ED%8A%B8%20%EB%A1%9C%EA%B3%A0_%EC%B5%9C%EC%A2%85(CMYK)-02.jpg"
+            alt="D-MATE"
+            width={120}
+            height={40}
+            className="h-9 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden md:flex items-center gap-8 px-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-[#0a0a0a] text-sm tracking-wider uppercase hover:opacity-50 transition-opacity"
+              className="text-white/60 text-[0.875rem] font-medium tracking-[-0.01em] hover:text-white transition-colors"
             >
               {link.label}
             </Link>
@@ -51,33 +46,46 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
+          className="md:hidden ml-auto flex items-center justify-center h-16 px-5 shrink-0"
+          onClick={() => setMenuOpen(true)}
+          aria-label="메뉴 열기"
         >
-          <span className={`block w-6 h-px bg-[#0a0a0a] transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2.5' : ''}`} />
-          <span className={`block w-6 h-px bg-[#0a0a0a] transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
-          <span className={`block w-6 h-px bg-[#0a0a0a] transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2.5' : ''}`} />
+          <span className="flex flex-col gap-[5px]">
+            <span className="block w-5 h-[1.5px] bg-white" />
+            <span className="block w-5 h-[1.5px] bg-white" />
+            <span className="block w-5 h-[1.5px] bg-white" />
+          </span>
         </button>
-      </div>
+      </header>
 
-      {/* Mobile menu */}
+      {/* Mobile full-screen menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-[#e5e5e5] px-6 py-6">
-          <nav className="flex flex-col gap-6">
+        <div className="fixed inset-0 z-[100] bg-black flex flex-col justify-center px-10">
+          <button
+            className="absolute top-5 right-6 text-white text-3xl leading-none hover:opacity-50 transition-opacity"
+            onClick={() => setMenuOpen(false)}
+            aria-label="메뉴 닫기"
+          >
+            ✕
+          </button>
+          <nav className="flex flex-col gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[#0a0a0a] text-base tracking-wider uppercase"
+                className="text-white text-5xl uppercase tracking-tight hover:opacity-40 transition-opacity"
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </Link>
             ))}
           </nav>
+          <p className="absolute bottom-8 left-10 text-white/30 text-xs tracking-widest uppercase">
+            D-MATE Communications
+          </p>
         </div>
       )}
-    </header>
+    </>
   );
 }

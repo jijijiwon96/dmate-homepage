@@ -1,7 +1,7 @@
 {
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"ls C:\\\\Users\\\\DMATE-PC27\\\\Desktop\\\\CLAUDE_PAGE\\\\src\",\"description\":\"List src directory contents\"}",
-  "error": "Exit code 2\nls: cannot access 'C:UsersDMATE-PC27DesktopCLAUDE_PAGEsrc': No such file or directory",
-  "timestamp": "2026-05-22T14:52:11.315Z",
-  "retry_count": 1
+  "tool_name": "mcp__playwright__browser_click",
+  "tool_input_preview": "{\"element\":\"맥주 brand filter button\",\"ref\":\"e26\"}",
+  "error": "### Error\nInvalid arguments for tool \"browser_click\":\n✖ Invalid input: expected string, received undefined\n  → at target",
+  "timestamp": "2026-06-26T03:17:20.527Z",
+  "retry_count": 2
 }

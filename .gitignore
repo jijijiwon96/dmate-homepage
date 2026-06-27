@@ -39,3 +39,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+.gstack/
+
+# Large video files (exceed GitHub 100MB limit)
+public/2020*
+
+# Dev/test screenshot artifacts (root level)
+/*.jpg
+/*.png
+.playwright-mcp/

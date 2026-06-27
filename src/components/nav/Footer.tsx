@@ -1,26 +1,32 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-[#e5e5e5] bg-white">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <p className="font-bold text-sm tracking-widest uppercase text-[#0a0a0a]">D-MATE</p>
-          <p className="text-[#6b6b6b] text-xs mt-1">© {year} D-MATE. All rights reserved.</p>
+    <footer className="bg-white text-black overflow-hidden">
+      {/* Small info bar */}
+      <div className="px-6 md:px-10 pt-10 pb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-black/10">
+        <div className="flex items-center gap-6">
+          <Image
+            src="/dmate-logo.jpg"
+            alt="D-MATE"
+            width={90}
+            height={30}
+            className="h-6 w-auto object-contain"
+          />
+          <p className="text-black/40 text-xs">© {year} D-MATE Inc.</p>
         </div>
-        <div className="flex flex-col md:flex-row gap-3 md:gap-8 text-xs text-[#6b6b6b]">
-          <a
-            href="mailto:oddin@dmate.kr"
-            className="hover:text-[#0a0a0a] transition-colors"
-          >
+        <div className="flex items-center gap-6 text-xs text-black/50">
+          <a href="mailto:oddin@dmate.kr" className="hover:text-[#0B63AD] transition-colors">
             oddin@dmate.kr
           </a>
-          <Link href="/work" className="hover:text-[#0a0a0a] transition-colors uppercase tracking-wider">Work</Link>
-          <Link href="/about" className="hover:text-[#0a0a0a] transition-colors uppercase tracking-wider">About</Link>
-          <Link href="/contact" className="hover:text-[#0a0a0a] transition-colors uppercase tracking-wider">Contact</Link>
+          <Link href="/work" className="uppercase tracking-wider hover:text-[#0B63AD] transition-colors">Work</Link>
+          <Link href="/about" className="uppercase tracking-wider hover:text-[#0B63AD] transition-colors">About</Link>
+          <Link href="/contact" className="uppercase tracking-wider hover:text-[#0B63AD] transition-colors">Contact</Link>
         </div>
       </div>
+
     </footer>
   );
 }

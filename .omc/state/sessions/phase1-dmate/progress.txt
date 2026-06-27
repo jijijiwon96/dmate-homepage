@@ -1,0 +1,41 @@
+## Phase 1 — D-MATE Homepage Static Site
+Completed: 2026-05-23
+
+### Stories Completed (9/9)
+- US-001: Foundation (next.config.ts, globals.css @theme tokens, types.ts, utils.ts cn())
+- US-002: Layout + Header (transparent→solid scroll) + Footer
+- US-003: Static content (works.ts ×8, clients.ts ×8, leadership.ts ×2) + data-access seam
+- US-004: Home Hero (100dvh, clamp font, scroll indicator)
+- US-005: Home preview sections (Work 2x2, About IEC, Contact mailto)
+- US-006: Work page (grid-cols-2, 16:9, URL-synced category filter)
+- US-007: About page (5 sections: Philosophy/IEC/Services/History/Clients)
+- US-008: Contact page (Let's talk, mailto:oddin@dmate.kr, Google Maps iframe)
+- US-009: Responsive + prefers-reduced-motion + build/lint/tsc all green
+
+### Files Created (47 files, 9304 lines)
+Key: src/app/{page,layout,work/page,about/page,contact/page,not-found}.tsx
+     src/components/{nav,home,work}/*.tsx (14 components)
+     src/content/{works,clients,leadership}.ts
+     src/lib/{types,utils,data/works}.ts
+     next.config.ts, globals.css, public/work|clients/placeholder.svg
+
+### Build Output
+✓ 5 routes: / (static), /about (static), /contact (static), /work (dynamic), /_not-found (static)
+✓ TypeScript: 0 errors
+✓ Lint: 0 errors
+✓ Committed: b2eff00 → pushed to origin/master → Vercel deploying
+
+### Patterns for Future Phases
+- Data-access seam: getWorks() in src/lib/data/works.ts — swap body for Supabase in Phase 3, no component changes
+- cn() from clsx+tailwind-merge available in @/lib/utils — use for conditional classNames
+- Design tokens: @theme in globals.css — --color-fg, --color-muted, --color-accent, --space-section
+- Font: Noto Sans KR via next/font/google (variable: --font-pretendard) — swap to actual Pretendard woff2 if needed
+- All pages use max-w-[1440px] mx-auto container pattern
+- Arrow SVG: consistent inline arrow icon across all CTA links
+
+### Phase 2 Next Steps
+- Add scroll fade-up entrance animations (respecting prefers-reduced-motion)
+- Wire IntersectionObserver for Reel video autoplay (stub already in Reel.tsx)
+- Add lightbox for Work card clicks (Phase 2 per PRD)
+- Add actual reel video to public/reel/ (mp4 + webm + poster.jpg)
+- Refine About section visuals (actual leadership photos, client logos)

@@ -1,0 +1,39 @@
+RALPH PROGRESS — D-MATE 홈페이지 수정사항 (2026-06-26)
+
+== 변경 파일 ==
+- src/content/works.ts
+    - id 25: 오레오 오즈(Sales-up) → 포스트 오레오오즈바(런칭) 리브랜딩
+      slug: oreo-os-campaign-2017 → post-oreo-os-bar
+      title: '포스트 오레오오즈바', category: '런칭'
+      thumbnail_url: https://img.youtube.com/vi/j2K8Sb44CKo/maxresdefault.jpg
+      video_url: https://www.youtube.com/watch?v=j2K8Sb44CKo&t=2s
+      background/whats_new/result: 사용자 제공 오레오오즈바 카피로 교체
+      stale 중복 detail_images 제거
+    - id 64 (KB RISE ETF): video_url 9rIACdZENUY → w4S0RbiQY94
+    - id 65 (오큐시스): video_url 제거
+    - id 13 (KBS NOON): detail_images 제거 (하단 이미지 삭제)
+- src/app/(site)/work/[slug]/page.tsx
+    - 영상 임베드에 start/t 파라미터 파싱 추가 → embed?start=N
+- src/components/work/CategoryFilter.tsx
+    - 런칭 라벨 → 'Launching' (value '런칭' 유지)
+    - 브랜드: 필라이트/칭따오/보령제약 제거, 맥주/제약 추가
+- src/components/work/WorkGrid.tsx
+    - getBrand: 맥주(하이트진로·필라이트·칭따오·Tsingtao·칼스버그) / 제약(보령·갈더마·지근억·애즈유·아임비타) 그룹핑
+- src/components/nav/ScrollToTop.tsx (신규) — 우하단 최상단 이동 버튼
+- src/app/(site)/layout.tsx — ScrollToTop 전역 마운트
+- next.config.ts — img.youtube.com remotePattern 추가
+
+== 검증 증거 (dev server, Playwright) ==
+- /work/post-oreo-os-bar: title '포스트 오레오오즈바', 런칭, iframe src = embed/j2K8Sb44CKo?start=2 ✓
+- /work/kb-rise-etf-launch-2025: iframe src = embed/w4S0RbiQY94 ✓
+- /work/ocusis-launch-2024: iframes=0 (영상 삭제), 갤러리 이미지 1 유지 ✓
+- /work/kbs-noon-2017: 갤러리 이미지 0 (하단 이미지 삭제), 영상 유지 ✓
+- /work 필터: 카테고리 'LAUNCHING' 노출, 맥주(4건: 하이트진로x2/칼스버그/칭따오), 제약(7건) 정상 ✓
+- 카테고리+브랜드 조합(런칭+제약=4건, 전부 런칭) 정상 ✓
+- ScrollToTop: scrollY>400 시 opacity 1, 클릭 시 scrollY=0 ✓
+- npx tsc --noEmit: 소스 에러 0 (잔여는 stale .next validator — build로 재생성)
+
+== 학습 ==
+- works.ts id == dmate.kr admin DB id. 상세영상 추출은 PowerShell로 dmate.kr/work/all/{id} HTML에서 youtube embed/watch 정규식 매칭.
+- 두 오레오오즈 캠페인 중 '상단'은 Work 그리드 정렬(연도desc, id desc) 기준 id 25(2017) > id 4(2016).
+- WorkGrid 필터의 2차 조건(client.includes(brand))이 '보령제약'에 대해 '제약'과도 매칭되나 결과 일관 — 문제 없음.

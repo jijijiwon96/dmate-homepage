@@ -1,0 +1,91 @@
+{
+  "title": "D-MATE 홈페이지 수정사항 반영 (오레오오즈바 리브랜딩 외)",
+  "stories": [
+    {
+      "id": "US-001",
+      "title": "상단 오레오오즈 캠페인(id 25)을 포스트 오레오오즈바로 리브랜딩",
+      "passes": true,
+      "acceptanceCriteria": [
+        "works.ts id '25' 엔트리의 title이 '포스트 오레오오즈바'를 반영함",
+        "video_url이 https://www.youtube.com/watch?v=j2K8Sb44CKo 이며 2초 시작(t=2s 또는 start=2) 파라미터 포함",
+        "background/whats_new/result 텍스트가 사용자가 제공한 오레오오즈바 카피로 교체됨",
+        "stale한 구 오레오오즈 detail_images(중복 PNG)가 제거됨",
+        "client는 '포스트' 유지, category는 '런칭'으로 설정"
+      ]
+    },
+    {
+      "id": "US-002",
+      "title": "상세페이지 영상 임베드에 시작 시간(start) 파라미터 지원",
+      "passes": true,
+      "acceptanceCriteria": [
+        "work/[slug]/page.tsx가 video_url의 t 또는 start 파라미터를 파싱함",
+        "embed src가 https://www.youtube.com/embed/{id}?start={n} 형태로 생성됨",
+        "start 값이 없으면 ?start 없이 정상 렌더링"
+      ]
+    },
+    {
+      "id": "US-003",
+      "title": "KB자산운용 RISE ETF(id 64) 영상 교체",
+      "passes": true,
+      "acceptanceCriteria": [
+        "id '64' video_url이 https://www.youtube.com/watch?v=w4S0RbiQY94 로 변경됨"
+      ]
+    },
+    {
+      "id": "US-004",
+      "title": "보령컨슈머헬스케어 오큐시스(id 65) 영상 삭제",
+      "passes": true,
+      "acceptanceCriteria": [
+        "id '65' 엔트리에서 video_url 필드가 제거됨",
+        "상세페이지에서 영상 섹션이 렌더링되지 않음(조건부)"
+      ]
+    },
+    {
+      "id": "US-005",
+      "title": "KBS NOON(id 13) 하단 이미지 삭제",
+      "passes": true,
+      "acceptanceCriteria": [
+        "id '13' 엔트리에서 detail_images 필드가 제거됨",
+        "상세페이지 하단 이미지 갤러리가 렌더링되지 않음"
+      ]
+    },
+    {
+      "id": "US-006",
+      "title": "우하단 최상단 이동(scroll-to-top) 버튼 추가",
+      "passes": true,
+      "acceptanceCriteria": [
+        "ScrollToTop 클라이언트 컴포넌트 생성",
+        "(site) 레이아웃에 전역으로 마운트되어 모든 공개 페이지에 노출",
+        "일정 스크롤 이후 우하단에 표시되고 클릭 시 부드럽게 최상단 이동"
+      ]
+    },
+    {
+      "id": "US-007",
+      "title": "Work 카테고리 필터 '런칭' 라벨 영어로 변경",
+      "passes": true,
+      "acceptanceCriteria": [
+        "CategoryFilter의 런칭 버튼 label이 영어(Launching)로 표시됨",
+        "필터 value는 '런칭' 유지하여 데이터 매칭 정상 동작"
+      ]
+    },
+    {
+      "id": "US-008",
+      "title": "브랜드 필터에 맥주/제약 탭 추가 + 매핑",
+      "passes": true,
+      "acceptanceCriteria": [
+        "CategoryFilter brands에 '맥주', '제약' 탭이 존재",
+        "WorkGrid.getBrand가 맥주(칭따오/하이트진로·필라이트/칼스버그)와 제약(보령제약/보령컨슈머/갈더마/지근억/애즈유/아임비타)을 올바르게 그룹핑",
+        "맥주/제약 탭 클릭 시 해당 캠페인만 노출"
+      ]
+    },
+    {
+      "id": "US-009",
+      "title": "빌드/타입체크 무결성",
+      "passes": true,
+      "acceptanceCriteria": [
+        "next build(또는 tsc) 통과, 변경 파일에 타입 에러 0",
+        "변경된 캠페인 상세/Work 페이지가 런타임 에러 없이 렌더링"
+      ]
+    }
+  ]
+}
