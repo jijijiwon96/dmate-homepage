@@ -1,7 +1,7 @@
 {
-  "tool_name": "mcp__playwright__browser_click",
-  "tool_input_preview": "{\"element\":\"맥주 brand filter button\",\"ref\":\"e26\"}",
-  "error": "### Error\nInvalid arguments for tool \"browser_click\":\n✖ Invalid input: expected string, received undefined\n  → at target",
-  "timestamp": "2026-06-26T03:17:20.527Z",
-  "retry_count": 2
+  "tool_name": "mcp__playwright__browser_navigate",
+  "tool_input_preview": "{\"url\":\"https://dmate-homepage.vercel.app\"}",
+  "error": "### Error\nError: browserBackend.callTool: Target page, context or browser has been closed",
+  "timestamp": "2026-06-27T13:13:32.776Z",
+  "retry_count": 1
 }
