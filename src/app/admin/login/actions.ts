@@ -4,7 +4,10 @@ import { createHash } from 'crypto';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-export async function loginAction(formData: FormData) {
+export async function loginAction(
+  _prevState: { error?: string } | undefined,
+  formData: FormData
+): Promise<{ error?: string } | undefined> {
   const password = formData.get('password') as string;
   const expected = process.env.ADMIN_PASSWORD ?? '0815';
 
