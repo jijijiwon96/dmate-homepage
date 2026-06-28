@@ -156,7 +156,7 @@ export default function ContactPage() {
       {/* ── Bottom strip ──────────────────────────────────────────── */}
       <div className="border-t border-white/10 px-6 md:px-12 max-w-[1440px] mx-auto py-8">
         <p className="text-[13px] text-white/40 tracking-wide">
-          © 2024 D-MATE Inc. All rights reserved.
+          © 2026 D-MATE Inc. All rights reserved.
         </p>
       </div>
 
