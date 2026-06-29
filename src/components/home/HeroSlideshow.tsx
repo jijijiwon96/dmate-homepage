@@ -102,7 +102,7 @@ export default function HeroSlideshow() {
     `introFadeUp  0.9s  cubic-bezier(0.76,0,0.24,1) ${delay}ms both`;
 
   return (
-    <section className="relative w-full h-[56.25vw] min-h-[240px] md:h-[100dvh] md:min-h-0 bg-black overflow-hidden">
+    <section className="relative w-full h-[100dvh] bg-black overflow-hidden">
 
       {/* ── Videos ─────────────────────────────────────────────── */}
       {slides.map((slide, i) => (
@@ -152,7 +152,7 @@ export default function HeroSlideshow() {
       {/* ── Intro overlay ──────────────────────────────────────── */}
       {/* 전환 시 container 자체는 천천히 fade, 텍스트는 별도 exit 애니 */}
       <div
-        className="absolute inset-0 z-40 flex items-center justify-center bg-black pointer-events-none"
+        className="fixed inset-0 z-[60] flex items-center justify-center bg-black pointer-events-none"
         style={{
           opacity:    phase === 'reel' ? 0 : 1,
           transition: phase === 'transition' ? 'opacity 0.9s ease-in-out' : 'none',
