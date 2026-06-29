@@ -102,7 +102,7 @@ export default function HeroSlideshow() {
     `introFadeUp  0.9s  cubic-bezier(0.76,0,0.24,1) ${delay}ms both`;
 
   return (
-    <section className="relative w-full h-[100dvh] bg-black overflow-hidden">
+    <section className="relative w-full h-[80dvh] md:h-[100dvh] bg-black overflow-hidden">
 
       {/* ── Videos ─────────────────────────────────────────────── */}
       {slides.map((slide, i) => (
