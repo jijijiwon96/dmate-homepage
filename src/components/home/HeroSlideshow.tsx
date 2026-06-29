@@ -102,7 +102,7 @@ export default function HeroSlideshow() {
     `introFadeUp  0.9s  cubic-bezier(0.76,0,0.24,1) ${delay}ms both`;
 
   return (
-    <section className="relative w-full h-[100dvh] bg-black overflow-hidden">
+    <section className="relative w-full h-[56.25vw] min-h-[240px] md:h-[100dvh] md:min-h-0 bg-black overflow-hidden">
 
       {/* ── Videos ─────────────────────────────────────────────── */}
       {slides.map((slide, i) => (
@@ -256,52 +256,71 @@ export default function HeroSlideshow() {
 
       {/* ── Bottom navigator ───────────────────────────────────── */}
       <div
-        className="absolute bottom-0 left-0 right-0 z-30 flex transition-opacity duration-700"
+        className="absolute bottom-0 left-0 right-0 z-30 transition-opacity duration-700"
         style={{ opacity: phase === 'reel' ? 1 : 0 }}
       >
-        {slides.map((slide, i) => (
-          <button
-            key={slide.slug}
-            onClick={() => goTo(i)}
-            className="flex-1 text-left overflow-hidden"
-          >
-            {/* Progress bar — 키컬러로 채움 */}
-            <div className="relative h-[2px] bg-white/15 overflow-hidden">
-              {i === active && (
-                <div
-                  key={`barra-${active}`}
-                  className="absolute inset-y-0 left-0"
-                  style={{
-                    backgroundColor: BRAND_BLUE,
-                    animation: `barra ${AUTO_MS}ms linear forwards`,
-                  }}
-                />
-              )}
-            </div>
+        {/* Mobile: 활성 슬라이드만 중앙 표시 + 점 네비 */}
+        <div className="md:hidden px-5 pb-4 pt-2 flex flex-col items-center">
+          <div className="relative h-[2px] w-full bg-white/15 overflow-hidden mb-3">
+            <div
+              key={`barra-m-${active}`}
+              className="absolute inset-y-0 left-0"
+              style={{ backgroundColor: BRAND_BLUE, animation: `barra ${AUTO_MS}ms linear forwards` }}
+            />
+          </div>
+          <p className="text-[10px] font-semibold tracking-wider uppercase leading-snug" style={{ color: BRAND_BLUE }}>
+            {slides[active].client}
+          </p>
+          <p className="text-[13px] font-semibold text-white leading-snug mt-0.5 text-center">
+            {slides[active].campaign}
+          </p>
+          <div className="flex gap-2 mt-2">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => goTo(i)}
+                className="w-1.5 h-1.5 rounded-full transition-colors duration-300"
+                style={{ backgroundColor: i === active ? BRAND_BLUE : 'rgba(255,255,255,0.3)' }}
+                aria-label={`슬라이드 ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
 
-            <div className="px-5 md:px-6 pt-3 pb-5">
-              {/* client명 — 활성 시 키컬러 */}
-              <p
-                className="text-[10px] md:text-[12px] font-semibold truncate transition-colors duration-300 leading-snug tracking-wider uppercase"
-                style={{
-                  color: i === active ? BRAND_BLUE : 'rgba(255,255,255,0.2)',
-                }}
-              >
-                {slide.client}
-              </p>
-              {/* 캠페인명 */}
-              <p
-                className="text-[13px] md:text-[15px] truncate transition-colors duration-300 leading-snug mt-0.5"
-                style={{
-                  color:      i === active ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.25)',
-                  fontWeight: i === active ? 600 : 400,
-                }}
-              >
-                {slide.campaign}
-              </p>
-            </div>
-          </button>
-        ))}
+        {/* Desktop: 5컬럼 전체 표시 */}
+        <div className="hidden md:flex">
+          {slides.map((slide, i) => (
+            <button
+              key={slide.slug}
+              onClick={() => goTo(i)}
+              className="flex-1 text-left overflow-hidden"
+            >
+              <div className="relative h-[2px] bg-white/15 overflow-hidden">
+                {i === active && (
+                  <div
+                    key={`barra-${active}`}
+                    className="absolute inset-y-0 left-0"
+                    style={{ backgroundColor: BRAND_BLUE, animation: `barra ${AUTO_MS}ms linear forwards` }}
+                  />
+                )}
+              </div>
+              <div className="px-6 pt-3 pb-5">
+                <p
+                  className="text-[12px] font-semibold truncate transition-colors duration-300 leading-snug tracking-wider uppercase"
+                  style={{ color: i === active ? BRAND_BLUE : 'rgba(255,255,255,0.2)' }}
+                >
+                  {slide.client}
+                </p>
+                <p
+                  className="text-[15px] truncate transition-colors duration-300 leading-snug mt-0.5"
+                  style={{ color: i === active ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.25)', fontWeight: i === active ? 600 : 400 }}
+                >
+                  {slide.campaign}
+                </p>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
 
       <style>{`
