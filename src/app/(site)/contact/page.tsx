@@ -1,5 +1,6 @@
 import FadeUp from '@/components/ui/FadeUp';
-import { EmailSendButton, CopyEmailButton } from '@/components/contact/CopyEmail';
+import { CopyEmailButton } from '@/components/contact/CopyEmail';
+import ContactForm from '@/components/contact/ContactForm';
 
 export const metadata = {
   title: 'Contact',
@@ -37,14 +38,12 @@ export default function ContactPage() {
         </FadeUp>
       </section>
 
-      {/* ── CTA bar ───────────────────────────────────────────────── */}
-      <section className="bg-white">
-        <div className="px-6 md:px-12 max-w-[1440px] mx-auto py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <p className="text-black text-lg md:text-xl font-semibold">
-            프로젝트 문의를 남겨주세요.
-          </p>
-          <EmailSendButton />
-        </div>
+      {/* ── Contact Form ──────────────────────────────────────────── */}
+      <section className="px-6 md:px-12 max-w-[1440px] mx-auto pb-28">
+        <FadeUp delay={0.3}>
+          <p className="text-[11px] tracking-[0.5em] uppercase text-white/45 mb-10">문의하기</p>
+          <ContactForm />
+        </FadeUp>
       </section>
 
       {/* ── Info + Map ────────────────────────────────────────────── */}
