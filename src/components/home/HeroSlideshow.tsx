@@ -72,7 +72,7 @@ export default function HeroSlideshow() {
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('transition'), 2600);
-    const t2 = setTimeout(() => setPhase('reel'),       3500);
+    const t2 = setTimeout(() => setPhase('reel'),       3100);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
@@ -148,7 +148,7 @@ export default function HeroSlideshow() {
         className="fixed inset-0 z-[60] flex items-center justify-center bg-black pointer-events-none"
         style={{
           opacity:    phase === 'reel' ? 0 : 1,
-          transition: phase === 'transition' ? 'opacity 0.9s ease-in-out' : 'none',
+          transition: phase === 'transition' ? 'opacity 0.5s ease-in-out' : 'none',
         }}
       >
         <div className="text-center px-6">
