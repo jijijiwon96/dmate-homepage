@@ -71,8 +71,8 @@ export default function HeroSlideshow() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('transition'), 2100);
-    const t2 = setTimeout(() => setPhase('reel'),       3000);
+    const t1 = setTimeout(() => setPhase('transition'), 2600);
+    const t2 = setTimeout(() => setPhase('reel'),       3500);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, []);
 
