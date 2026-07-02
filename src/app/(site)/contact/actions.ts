@@ -30,7 +30,7 @@ export async function sendContactEmail(
   try {
     await resend.emails.send({
       from: 'D-MATE 홈페이지 <onboarding@resend.dev>',
-      to:   ['oddin@dmate.kr'],
+      to:   ['jijijiwon96@gmail.com'], // TODO: dmate.kr 도메인 인증 후 oddin@dmate.kr로 변경
       replyTo: email,
       subject: `[D-MATE 홈페이지 문의] ${name}${company ? ` / ${company}` : ''}`,
       text: [
